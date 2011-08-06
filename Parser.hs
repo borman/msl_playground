@@ -1,4 +1,4 @@
-module Msl.Parser where
+module Msl.Parser (mslProgram) where
 
 import Text.ParserCombinators.Parsec
 import Msl.AST
@@ -6,8 +6,8 @@ import Msl.Lexer
 
 type MslParser a = GenParser (SourcePos, Lexem) () a
 
-program :: MslParser [Decl]
-program = do
+mslProgram :: MslParser [Decl]
+mslProgram = do
   decls <- many decl
   eof
   return decls
